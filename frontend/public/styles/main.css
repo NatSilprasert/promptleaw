@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    width: 1512px;
+    background-color: black;
+    font-family: "Inter";
+    font-size: 16px;
+    color: #8B9096;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding: 16px 120px 16px 120px;
+    align-items: center;
+}
+
+.menu {
+    color: #8B9096;
+}
+
+.menu:hover {
+    color: #FFFFFF;
+}
+
+.menu:visited {
+    cursor: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.promptCardSection {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    gap: 24px;
+    width: 1272px;
+    height: 825px;
+    padding: 36px 0px 0px 0px;
+}
+
+.promptCard {
+    background-color: #1f1f1f;
+    width: 300px;
+    height: 400px;
+    border-radius: 30px;
+}
