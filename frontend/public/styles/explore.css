@@ -1,60 +1,59 @@
 .body {
     display: flex;
     flex-direction: column;
-    height: 1135px;
-    padding: 36px 120px 0px 120px;
+    min-height: 100vh;
+    padding: 36px 120px 0;
 }
 
 .hero {
-    width: 1272px;
-    height: 238px;
+    width: 100%;
+    max-width: 1272px;
     display: flex;
-    /* font-family: 'Inter'; */
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
 .banner {
-    width: 468px;
-    margin: 20px 0px 0px 0px;
-    font-size: 48px;
+    width: 100%;
+    max-width: 468px;
+    margin: 20px 0 0;
+    font-size: 3rem;
     font-weight: 600;
     color: #FFFFFF;
 }
 
 .search {
-    width: 750px;
-    height: 43px;
+    width: 100%;
+    max-width: 750px;
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0 0;
+    flex-wrap: wrap;
 }
 
 .search-form {
     display: flex;
-    width: 579px;
+    width: 100%;
+    max-width: 579px;
     overflow: hidden;
 }
 
-/* Style the text input field */
 #search-input {
     background-color: #1F1F1F;
     color: #8B9096;
-    border: none; /* Remove default border */
-    padding: 10px;
-    padding: 12px 16px 12px 16px;
+    border: none;
+    padding: 12px 16px;
     border-radius: 100px;
-    /* This makes the input field take up all available space */
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
-/* Remove the blue "focus" outline that appears on click */
 #search-input:focus {
-  outline: none;
+    outline: none;
 }
 
 .create {
@@ -62,11 +61,25 @@
     height: 43px;
     border-radius: 100px;
     border: none;
-    padding: 12px 24px 12px 24px;
+    padding: 12px 24px;
     background-color: #524FF0;
     color: #FFFFFF;
     text-align: center;
     font-weight: 600;
-    flex-grow: 1;
     cursor: pointer;
+}
+
+/* Mobile adjustments for hero */
+@media (max-width: 768px) {
+    .body {
+        padding: 24px 16px;
+    }
+
+    .hero {
+        padding: 0;
+    }
+
+    .banner {
+        font-size: 2rem;
+    }
 }
