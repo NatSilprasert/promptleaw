@@ -36,7 +36,6 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-content: center;
     gap: 24px;
     width: 1272px;
     height: 825px;
