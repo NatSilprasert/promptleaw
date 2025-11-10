@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/my-prompts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>PromptLaew</title>
 </head>
 <body>
-    
+    <div class="header">
+        <div style="flex-grow: 3; display: flex; align-items: center; gap: 36px; flex-direction: row;">
+            <div><p style="font-size: 24px; color: white; margin: 0px;">PromptLaew</p></div>
+            <a class="menu" href="index.html">Explore</a>
+            <a class="menu" href="my-prompts.html">Your Prompts</a>
+            <a class="menu" href="about.html">About</a>
+        </div>
+        <div style="flex-grow: 1; display: flex; align-items: center; gap: 36px; flex-direction:row-reverse;">
+            <a class="menu" href="login.html"><div style="padding: 12px 24px 12px 24px; color: #FFFFFF; background-color: #524FF0; border-radius: 100px;">Sign In</div></a>
+            <a class="menu" href="register.html">Sign Up</a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="hero">
+            <P style="margin: 0px; color: white; font-size: 32px; font-weight: 600;">Your Prompts</P>
+            <button class="create">Create new</button>
+        </div>
+        <div class="promptCardSection">
+            <div class="promptCard"></div>
+            <div class="promptCard"></div>
+            <div class="promptCard"></div>
+        </div>
+    </div>
 </body>
 </html>

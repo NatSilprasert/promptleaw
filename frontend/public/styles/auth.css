@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    border : solid 1px #262626;
+    background-color: #0A0B0F;
+    padding: 48px;
+    border-radius: 30px;
+    width: 504px;
+}
+
+h2{
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+
+.welcome{
+    font-size: 16px;
+    color: gray ;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+input {
+    width: 100%;
+    padding : 12px 16px 12px 16px;
+    border-radius: 1opx;
+    background-color: #0D1219;
+    border: none;
+    margin-bottom: 16px;
+    outline: none;
+    color: white;
+}
+
+input:focus {
+  background-color: #1a1a1a;
+}
+
+button {
+    width: 100%;
+    background-color: #524FF0;
+    padding : 12px 24px 12px 24px ;
+    border: none ;
+    border-radius: 100px;
+    color: white ;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.register {
+    display: block;
+    color: white;
+    text-decoration:  none;
+    text-align: center;
+}
