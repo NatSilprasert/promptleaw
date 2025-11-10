@@ -12,3 +12,5 @@ promptRouter.put('/update', authUser, updatePrompt)
 promptRouter.delete('/:id', authUser, deletePrompt)
 
 export default promptRouter
+
+`note${gay}`
