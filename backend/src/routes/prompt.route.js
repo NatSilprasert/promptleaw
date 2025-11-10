@@ -6,9 +6,9 @@ const promptRouter = express.Router()
 
 promptRouter.get('/', getAllPrompt)
 promptRouter.get('/:id', getOnePrompt)
-promptRouter.post('/get/filter', authUser, getFilterPrompt)
+promptRouter.post('/filter', authUser, getFilterPrompt)
 promptRouter.post('/create', authUser, createPrompt)
-promptRouter.put('/update', authUser, updatePrompt)
+promptRouter.put('/update/:id', authUser, updatePrompt)
 promptRouter.delete('/:id', authUser, deletePrompt)
 
 export default promptRouter
