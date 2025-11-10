@@ -1,0 +1,12 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    height: 1245px;
+    padding: 24px 120px 0px 120px;
+    gap: 36px;
+}
+
+.context {
+    width: 1272px;
+    height: auto;
+}
