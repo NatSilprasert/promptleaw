@@ -1,5 +1,4 @@
 .body {
-    border: solid 2px white;
     height: 1245px;
     display: flex;
     flex-direction: column;
@@ -7,7 +6,6 @@
 }
 
 .hero {
-    border: solid 2px white;
     width: 1272px;
     display: flex;
     gap: 16px;
