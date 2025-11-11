@@ -1,74 +1,135 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* ===== Base reset ===== */
+*{ box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ===== Theme (เหมือน redirect) ===== */
+:root{
+  --bg: #000000;
+  --panel: #0A0B0F;
+  --panel-border: #262626;
+  --text: #FFFFFF;
+  --muted: #9AA0A6;         /* เทาอ่านง่ายกว่า gray ธรรมดา */
+  --brand: #524FF0;
+  --radius-xl: 30px;
+  --radius-pill: 1000px;
 }
 
-body {
-    background-color: black;
-    color: white;
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
+/* ===== Page layout ===== */
+html{ font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body{
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: 100dvh;       /* รองรับมือถือ */
+  display: grid;
+  place-items: center;
+  padding: 0;               /* เดสก์ท็อป = 0, มือถือจะเพิ่ม padding ผ่าน media query */
+  line-height: 1.6;
 }
 
-.login-box {
-    border : solid 1px #262626;
-    background-color: #0A0B0F;
-    padding: 48px;
-    border-radius: 30px;
-    width: 504px;
+/* ===== Card (ขนาดเดิมเป๊ะบนเดสก์ท็อป) ===== */
+.login-box{
+  width: 504px;             /* ขนาดเดิม */
+  padding: 48px;            /* ขนาดเดิม */
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
 }
 
+/* ===== Typography (ขนาดเดิม) ===== */
 h2{
-    font-size: 32px;
-    margin-bottom: 4px;
+  font-size: 32px;          /* เดิม 32px */
+  font-weight: 600;
+  margin-bottom: 4px;       /* เดิม 4px */
 }
-
 .welcome{
-    font-size: 16px;
-    color: gray ;
-    margin-bottom: 28px;
+  font-size: 16px;          /* เดิม 16px */
+  color: #80868B;           /* เทาที่คอนทราสต์ดีบนพื้นเข้ม */
+  margin-bottom: 28px;      /* เดิม 28px */
 }
 
-label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 12px;
+/* ===== Form ===== */
+label{
+  display: block;
+  font-size: 16px;          /* เดิม 16px */
+  margin-bottom: 12px;      /* เดิม 12px */
 }
 
-input {
-    width: 100%;
-    padding : 12px 16px 12px 16px;
-    border-radius: 1opx;
-    background-color: #0D1219;
-    border: none;
-    margin-bottom: 16px;
-    outline: none;
-    color: white;
+input{
+  width: 100%;
+  padding: 12px 16px;       /* เดิม 12 16 12 16 */
+  border-radius: 10px;      /* แก้พิมพ์ผิด 1opx -> 10px */
+  background-color: #0D1219;
+  border: 1px solid var(--panel-border);
+  margin-bottom: 16px;      /* เดิม 16px */
+  outline: none;
+  color: var(--text);
+}
+input::placeholder{ color: #8B9096; }
+input:focus{
+  background-color: #111827;
+  box-shadow: 0 0 0 3px rgba(82,79,240,.25);
 }
 
-input:focus {
-  background-color: #1a1a1a;
+/* ===== Button ===== */
+button{
+  width: 100%;
+  background-color: var(--brand);
+  padding: 12px 24px;        /* เดิม 12 24 */
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 16px;           /* เดิม 16px */
+  margin-bottom: 24px;       /* เดิม 24px */
+  cursor: pointer;
+  transition: filter .15s ease, transform .1s ease;
+}
+button:hover{ filter: brightness(1.05); }
+button:active{ transform: translateY(.5px); }
+
+/* ===== Link ===== */
+.register{
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  text-align: center;
+  opacity: .95;
+}
+.register:hover{ text-decoration: underline; }
+
+/* ===== Responsive: ย่อให้พอดีจอเล็ก โดยไม่เปลี่ยนสเกลเดิมบนจอปกติ ===== */
+@media (max-width: 560px){
+  body{ padding: 16px; }         /* กันชิดขอบจอ */
+  .login-box{
+    width: 100%;                 /* ยืดเต็มจอเล็ก */
+    max-width: 504px;            /* แต่ไม่เกินขนาดเดิม */
+    padding: 32px;               /* ลด padding นิดหน่อยเพื่อกันแน่นบนจอเล็ก */
+  }
 }
 
-button {
-    width: 100%;
-    background-color: #524FF0;
-    padding : 12px 24px 12px 24px ;
-    border: none ;
-    border-radius: 100px;
-    color: white ;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 24px;
+@media (max-height: 640px){
+  /* จอเตี้ยมาก: เลิกจัดกลางแนวตั้งเพื่อเลื่อนดูฟอร์มได้ครบ */
+  body{
+    align-items: start;
+    padding-top: 16px;
+  }
 }
 
-.register {
-    display: block;
-    color: white;
-    text-decoration:  none;
-    text-align: center;
+/* ==== Thicker text inside inputs ==== */
+.login-box input{
+  font-weight: 300;            /* ทำให้ตัวที่พิมพ์ลงไปหนาขึ้น */
+  letter-spacing: .1px;        /* ช่วยให้หนา/คมขึ้นเล็กน้อย */
 }
+
+.login-box input::placeholder{
+  font-weight: 300;            /* ให้ placeholder หนาขึ้นด้วย (ทางลัด) */
+  color: #AEB4BC;              /* เทาอ่อนขึ้นเพื่อยังแยกจากค่าที่พิมพ์ */
+  opacity: 1;                  /* กันบาง browser ทำให้จางเกินไป */
+}
+
+/* เผื่อบางเบราว์เซอร์เก่า */
+.login-box input::-webkit-input-placeholder{ font-weight: 300; }
+.login-box input::-moz-placeholder{ font-weight: 300; }
+.login-box input:-ms-input-placeholder{ font-weight: 300; }
+.login-box input:-moz-placeholder{ font-weight: 300; }
