@@ -19,6 +19,11 @@ body {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     color: #8B9096;
+
+     /* --- ADD THESE 3 LINES --- */
+    min-height: 120vh; /* Make body at least full screen height */
+    display: flex;
+    flex-direction: column;
 }
 
 /* ===== HEADER ===== */

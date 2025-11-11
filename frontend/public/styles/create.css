@@ -1,69 +1,79 @@
+/* === MOBILE-FIRST STYLES (Default) === */
+
 .body {
-    height: 1245px;
+    height: auto;
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    padding: 24px 120px 0px 120px;
+    gap: 24px; /* Reduced gap for mobile */
+    padding: 16px; /* Reduced padding for mobile */
     align-items: center;
 }
 
+.page-title {
+    font-size: 28px; /* Slightly smaller for mobile */
+    color: white;
+    font-weight: 600;
+    margin: 0px;
+    width: 100%;
+}
+
+.prompt-container {
+    width: 100%;
+}
+
 .prompthead {
-    font-size: 24px;
+    font-size: 20px; /* Slightly smaller */
     font-weight: 500;
     color: white;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 10px;
-    width: 1144px;
-    height: 101px;
-    padding: 36px;
-    border-style: solid;
-    border-color: #262626;
-    border-width: 1px 1px 0px 1px;
-    border-radius: 30px 30px 0px 0px;
+    width: 100%;
+    padding: 24px; /* Reduced padding */
+    border: 1px solid #262626;
+    border-radius: 20px 20px 0 0;
     background-color: #0A0B0F;
 }
 
 .promptbody {
-    width: 1144px;
-    height: auto;
-    padding: 36px;
+    width: 100%;
+    padding: 24px; /* Reduced padding */
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Stack vertically on mobile */
+    align-items: center;
     gap: 36px;
     background-color: #0A0B0F;
-    border-style: solid;
-    border-color: #262626;
-    border-width: 1px 1px 1px 1px;
-    border-radius: 0px 0px 30px 30px;
+    border: 1px solid #262626;
+    border-top: none; /* Avoid double border */
+    border-radius: 0 0 20px 20px;
 }
 
-.imageinput {
-    width: 300px;
-    height: 400px;
-    padding: 60px 0px 60px 0px;
+/* Picture frame section */
+.imageinput,
+.showimage {
+    width: 100%;
+    max-width: 400px;
+    height: 300px; /* Shorter height for mobile */
+    padding: 60px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #524FEF1A;
-    border: 2px dashed #524FF0;
     border-radius: 16px;
     color: white;
     gap: 16px;
+    flex-shrink: 0;
+}
+
+.imageinput {
+    background-color: #524FEF1A;
+    border: 2px dashed #524FF0;
 }
 
 .showimage {
-    width: 300px;
-    height: 400px;
-    padding: 60px 0px 60px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #1f1f1f;
-    border-radius: 16px;
-    gap: 16px;
+    border: 1px solid #262626;
 }
 
 #imageinput {
@@ -72,35 +82,139 @@
     background-color: #524FF0;
     border-radius: 8px;
     text-align: center;
-    padding: 10px 24px 10px 24px;
+    padding: 10px 24px;
     border: none;
     color: white;
     font-weight: 600;
     cursor: pointer;
+}
+
+/* Text and input section */
+.form-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0px;
+}
+
+.form-label {
+    color: white;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.form-input {
+    height: 43px;
+    padding: 12px 16px;
+    background-color: #0D1219;
+    border: solid 1px #262626;
+    border-radius: 16px;
+    color: #8B9096;
+    font-size: 16px;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+}
+
+#prompt-textarea {
+    height: 204px;
+    resize: vertical; /* Allow user to resize */
+}
+
+/* Button section */
+.form-actions {
+    display: flex;
+    flex-direction: column-reverse; /* Stack buttons on mobile */
+    gap: 10px;
+    width: 100%;
+}
+
+#clear,
+#create {
+    height: 43px;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 100px;
+    border: none;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    width: 100%; /* Full width buttons on mobile */
 }
 
 #clear {
-    width: 114px;
-    height: 43px;
-    padding: 12px 24px 12px 24px;
     background-color: white;
     color: black;
-    font-weight: 600;
-    border-radius: 100px;
-    border: none;
-    font-family: "Inter";
-    cursor: pointer;
 }
 
 #create {
-    width: 125px;
-    height: 43px;
-    padding: 12px 24px 12px 24px;
     background-color: #524FF0;
     color: white;
-    font-weight: 600;
-    border-radius: 100px;
-    border: none;
-    font-family: "Inter";
-    cursor: pointer;
+}
+
+
+/* --- TABLET STYLES --- */
+@media (min-width: 768px) {
+    .body {
+        padding: 24px 60px;
+    }
+
+    .promptbody {
+        flex-direction: row; /* Side-by-side */
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .imageinput,
+    .showimage {
+        flex: 0 0 300px; /* Give it a fixed width */
+        height: 400px;
+        width: 300px;
+    }
+
+    .form-content {
+        flex: 1; /* Let it take remaining space */
+    }
+
+    .form-actions {
+        flex-direction: row-reverse; /* Side-by-side buttons */
+    }
+    
+    #clear,
+    #create {
+        width: 125px; /* Set specific width */
+    }
+}
+
+
+/* --- DESKTOP STYLES --- */
+@media (min-width: 1144px) {
+    .body {
+        padding: 24px 120px 0px 120px;
+        gap: 36px;
+    }
+
+    .prompt-container {
+        max-width: 1144px;
+        margin: 0 auto;
+    }
+
+    .prompthead {
+        font-size: 24px;
+        padding: 36px;
+        border-radius: 30px 30px 0 0;
+    }
+    
+    .promptbody {
+        padding: 36px;
+        gap: 36px;
+        border-radius: 0 0 30px 30px;
+    }
 }
