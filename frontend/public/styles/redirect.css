@@ -1,56 +1,89 @@
-.body {
-    display: flex;
-    flex-direction: column;
-    height: 1135px;
-    padding: 36px 120px 0px 120px;
+/* ใช้ design tokens จาก main.css */
+
+/* HERO */
+.hero{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+.banner{
+  color:#fff; font-weight:600;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+.sub{
+  margin-top: var(--space-2);
+  opacity:.9;
 }
 
-.hero {
-    width: 1272px;
-    height: 66px;
-    display: flex;
-    /* font-family: 'Inter'; */
-    flex-direction: column;
-    align-items: center;
+/* CARD WRAP */
+.card-wrap{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  justify-items:center;
+  margin-bottom: var(--space-6);
 }
 
-.banner {
-    margin: 0px 0px 0px 0px;
-    width: auto;
-    font-size: 32px;
-    font-weight: 600;
-    color: #FFFFFF;
+/* RESULT CARD */
+.result-card{
+  width:100%;
+  max-width: 720px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  overflow:hidden;
+  position:relative;
+  display:flex; flex-direction:column;
 }
 
-.promptCardImage {
-    background-color: #1f1f1f;
-    width: 460px;
-    height: 614px;
-    border-radius: 30px;
+/* Preview image area: ปรับ aspect-ratio และ cover */
+.result-image{
+  width:100%;
+  aspect-ratio: 1 / 1;           /* แนะนำสี่เหลี่ยมจัตุรัสบนมือถือ */
+  background: #0b0b0b;
+  background-image:
+    radial-gradient(transparent 60%, rgba(255,255,255,0.06) 61%),
+    linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  background-size: cover;
+  background-position: center;
+  /* ถ้ามีรูปจริง:
+     background-image: url('...'); background-size: cover; background-position: center; */
 }
 
-.CardHandle {
-    margin: 36px 0px 0px 0px;
-    width: 1272px;
-    height: 614px;
-    display: flex;
-    /* font-family: 'Inter'; */
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Actions bar */
+.card-actions{
+  display:flex; gap: var(--space-2);
+  justify-content:flex-end;
+  padding: var(--space-3);
+  background: rgba(0,0,0,.2);
+  backdrop-filter: blur(6px);
 }
 
-.Download {
-    margin: 546px 0px 0px 392px;
-    width: 44px;
-    height: 44px;
-    border-radius: 100px;
-    border: none;
-    padding: 0px 0px 0px 0px;
-    background-color: #FFFFFF;
-    color: #1f1f1f;
-    text-align: center;
-    font-weight: 600;
-    flex-grow: 1;
-    cursor: pointer;
+.btn{
+  appearance:none; border:none; cursor:pointer;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color:#fff; font-weight:600;
+}
+.btn:hover, .btn:focus-visible{
+  filter: brightness(1.05);
+  outline: none;
+}
+.btn.ghost{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+}
+
+/* ≥768px: ขยายสัดส่วนรูป และ spacing */
+@media (min-width: 768px){
+  .result-image{ aspect-ratio: 4 / 3; } /* กว้างขึ้นบนแท็บเล็ต */
+}
+
+/* ≥1024px: กลายเป็น layout สองส่วนถ้าต้องการเพิ่มรายละเอียดด้านข้างในอนาคต */
+@media (min-width: 1024px){
+  .card-wrap{
+    grid-template-columns: 1fr;
+  }
+  .result-card{ max-width: 840px; }
 }
