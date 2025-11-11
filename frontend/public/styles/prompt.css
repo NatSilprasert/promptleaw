@@ -1,0 +1,126 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    height: 1245px;
+    padding: 24px 120px 0px 120px;
+    gap: 36px;
+}
+
+.context {
+    width: 1272px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    padding: 0px 64px 0px 64px;
+}
+
+.bigPromptCard {
+    width: 507px;
+    height: 767px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.image {
+    height: 676px;
+    width: auto;
+    background-color: #1f1f1f;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px 1px 0px 1px;
+    border-radius: 30px 30px 0px 0px;
+}
+
+.describe {
+    width: auto;
+    height: auto;
+    padding: 12px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #0A0B0F;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 0px 1px 1px 1px;
+    border-radius: 0px 0px 30px 30px;
+}
+
+#profilename {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.prompthead {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 589px;
+    height: 101px;
+    padding: 36px;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px 1px 0px 1px;
+    border-radius: 30px 30px 0px 0px;
+    background-color: #0A0B0F;
+}
+
+.promptbody {
+    width: 589px;
+    height: 801px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: #0A0B0F;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.imageinput {
+    width: 517px;
+    height: 257px;
+    padding: 60px 0px 60px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #524FEF1A;
+    border: 2px dashed #524FF0;
+    border-radius: 16px;
+    color: white;
+    gap: 16px;
+}
+
+#imageinput {
+    width: 137px;
+    height: 39px;
+    background-color: #524FF0;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px 24px 10px 24px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#generateimage{
+    height: 43px;
+    padding: 12px 24px 12px 24px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    background-image: linear-gradient(to right, #9520FB, #524FF0);
+    border: none;
+    cursor: pointer;
+}
