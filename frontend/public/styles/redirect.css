@@ -1,16 +1,16 @@
 /* ===== Responsive tokens ===== */
 :root{
-  --container-x: clamp(16px, 5vw, 120px);     /* padding ซ้ายขวาไหลตามจอ */
-  --content-max: 1272px;                      /* ความกว้างสูงสุดของคอนเทนต์ */
-  --card-max: 460px;                           /* ความกว้างสูงสุดของการ์ดรูป */
-  --btn-size: clamp(36px, 6vw, 44px);         /* ขนาดปุ่มลอย */
+  --container-x: clamp(16px, 5vw, 120px);
+  --content-max: 1272px;                      
+  --card-max: 460px;                         
+  --btn-size: clamp(36px, 6vw, 44px);
 }
 
-/* ===== Layout (ใช้ .body ของคุณตามเดิม) ===== */
+/* ===== Layout  ===== */
 .body{
   display: flex;
   flex-direction: column;
-  min-height: 100vh;                          /* เดิม fix 1135px => ยืดตามจอ */
+  min-height: 100vh;                         
   padding: 36px var(--container-x) 0 var(--container-x);
 }
 
@@ -28,7 +28,7 @@
 .banner{
   margin: 0;
   width: auto;
-  font-size: clamp(24px, 3.5vw, 32px);        /* เดิม 32px => ยืดหยุ่น */
+  font-size: clamp(24px, 3.5vw, 32px);        
   font-weight: 600;
   color: #FFFFFF;
 }
@@ -46,18 +46,15 @@
   margin-right: auto;
 }
 
-/* การ์ดรูป: เดิม fixed 460x614 => ใช้ aspect-ratio ให้ยืดหยุ่น */
 .promptCardImage{
   background-color: #1f1f1f;
   width: min(100%, var(--card-max));
-  aspect-ratio: 3 / 4;                        /* เทียบเท่า 460x614 */
+  aspect-ratio: 3 / 4;                        
   border-radius: 30px;
-  position: relative;                          /* เพื่อวางปุ่มลอย */
+  position: relative;                        
   overflow: hidden;
 }
 
-/* ===== Floating Download Button (เหมือนภาพ) ===== */
-/* เดิมใช้ margin ขยับไปมุม => เปลี่ยนเป็น absolute ยึดมุมล่างขวา */
 .Download{
   position: absolute;
   right: 16px;
@@ -81,7 +78,6 @@
   transition: transform .15s ease, box-shadow .15s ease;
 }
 
-/* ไอคอนดาวน์โหลด (SVG ฝังผ่าน background) */
 .Download::before{
   content: "";
   width: 20px;
@@ -89,7 +85,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px 20px;
-  /* arrow-down-tray แบบเส้น (stroke = #1f1f1f) */
   background-image: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1f1f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'>\
   <path d='M12 3v10m0 0l3.5-3.5M12 13L8.5 9.5M4 15.5v2A2.5 2.5 0 006.5 20h11A2.5 2.5 0 0020 17.5v-2'/>\
@@ -108,8 +103,7 @@
   outline-offset: 3px;
 }
 
-/* ===== Breakpoints (ถ้าต้องการจูนเพิ่มได้) ===== */
+/* ===== Breakpoints  ===== */
 @media (max-width: 768px){
-  /* ลด padding ขอบจอมือถือให้อ่านง่าย */
   :root{ --container-x: 16px; }
 }
