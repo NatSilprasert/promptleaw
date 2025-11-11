@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/create.css">
-    <title>PromptLaew</title>
+    <title>PromptLaew - Update</title>
 </head>
 <body>
     <header class="header">
@@ -33,29 +33,36 @@
     </header>
 
     <main class="body">
-        <p style="font-size: 32px; color: white; font-weight: 600; margin: 0px;">Create New Propmt</p>
-        <diV style="width: 1272px; height: 573px; padding: 0px 64px 0px 64px;">
+        <p class="page-title">Update Prompt</p>
+        
+        <!-- This container holds the whole form -->
+        <div class="prompt-container">
             <div class="prompthead">
                 <p>Basic Information</p>
             </div>
             <div class="promptbody">
-                <div class="showimage"></div>
-                <div style="display: flex; flex-direction: column; gap: 24px; height: 400px;">
-                    <div style="width: 736px; height: auto; display: flex; flex-direction: column; gap: 16px;">
-                        <p style="color: white; font-weight: 500; margin: 0px;">Title</p>
-                        <input type="text" style="height: 43px; padding: 12px 16px 12px 16px; background-color: #0D1219; border: solid 1px #262626; border-radius: 16px; color: #8B9096; font-size: 16px;">
+                <!-- This version shows an image -->
+                <div class="showimage">
+                    <!-- You would put an <img> tag in here -->
+                </div>
+                
+                <!-- This div wraps the form fields -->
+                <div class="form-content">
+                    <div class="form-group">
+                        <p class="form-label">Title</p>
+                        <input type="text" class="form-input">
                     </div>
-                    <div style="width: 736px; height: auto; display: flex; flex-direction: column; gap: 16px; margin: 0px;">
-                        <p style="color: white; font-weight: 500; margin: 0px;">Prompt</p>
-                        <textarea type="text" style="height: 204px; padding: 12px 16px 12px 16px; background-color: #0D1219; border: solid 1px #262626; border-radius: 16px; color: #8B9096; font-size:16px;"></textarea>
+                    <div class="form-group">
+                        <p class="form-label">Prompt</p>
+                        <textarea class="form-input" id="prompt-textarea"></textarea>
                     </div>
-                    <div style="display: flex; flex-direction: row-reverse; gap: 10px;">
+                    <div class="form-actions">
                         <button id="create">Update</button>
                         <button id="clear">Clear</button>
                     </div>
                 </div>
             </div>
-        </diV>
+        </div>
     </main>
 
     <script>
