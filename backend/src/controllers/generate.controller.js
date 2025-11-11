@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
-import multer from "multer";
 import fs from "fs";
 
 dotenv.config();
@@ -44,6 +43,13 @@ export const generateImageHandler = async (req, res) => {
     }
 
     fs.unlinkSync(imagePath); // Delete file done
+
+    if (!savedImageBase64) {
+      return res.status(400).json({
+        success: false,
+        message: "No generated image data returned.",
+      });
+    }
 
     res.status(200).json({
       success: true,
