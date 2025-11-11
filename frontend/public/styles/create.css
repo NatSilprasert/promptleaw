@@ -53,6 +53,19 @@
     gap: 16px;
 }
 
+.showimage {
+    width: 300px;
+    height: 400px;
+    padding: 60px 0px 60px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f1f1f;
+    border-radius: 16px;
+    gap: 16px;
+}
+
 #imageinput {
     width: 137px;
     height: 39px;
