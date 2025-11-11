@@ -1,11 +1,10 @@
 import express from 'express'
 import authUser from '../middleware/auth.js'
 import { generateImageHandler } from '../controllers/generate.controller.js'
-import multer from 'multer';
+import { upload } from '../middleware/upload.js';
 
 const generateRouter = express.Router();
-const upload = multer({ dest: "uploads/" });
 
-generateRouter.post('/', upload.single("image"), authUser, generateImageHandler);
+generateRouter.post('/', authUser, upload.single("image"), generateImageHandler);
 
 export default generateRouter
