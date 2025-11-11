@@ -1,102 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles/main.css" />
-  <link rel="stylesheet" href="styles/redirect.css" />
-  <title>Result • PromptLaew</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/redirect.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Document</title>
 </head>
 <body>
-  <!-- Header (reuse จาก main.css) -->
-  <header class="header">
-    <div class="logo">PromptLaew</div>
-
-    <button class="hamburger" id="hamburger"
-            aria-label="Toggle navigation"
-            aria-controls="nav"
-            aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav" id="nav">
-      <div class="nav-left">
-        <a class="menu" href="index.html">Explore</a>
-        <a class="menu" href="my-prompts.html">Your Prompts</a>
-        <a class="menu" href="about.html">About</a>
-      </div>
-      <div class="nav-right">
-        <a class="menu" href="login.html"><div class="signin-btn">Sign In</div></a>
-        <a class="menu" href="register.html">Sign Up</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="page">
-    <section class="hero container">
-      <p class="banner">Here’s your result 🎉</p>
-      <p class="sub">Love it? Save or share your result with others.</p>
-    </section>
-
-    <section class="container">
-      <div class="card-wrap">
-        <figure class="result-card" aria-labelledby="img-caption">
-          <!-- วาง <img> ถ้ามี src จริง; ตอนนี้ใช้ div เป็น placeholder -->
-          <div class="result-image" role="img" aria-label="Generated image preview"></div>
-
-          <figcaption id="img-caption" class="sr-only">
-            Generated image preview
-          </figcaption>
-
-          <div class="card-actions">
-            <button class="btn ghost" id="btn-copy">Copy Link</button>
-            <button class="btn" id="btn-download">Download</button>
-          </div>
-        </figure>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('active');
-        hamburger.classList.toggle('active', isOpen);
-        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    }
-
-    // Actions
-    const dlBtn = document.getElementById('btn-download');
-    const copyBtn = document.getElementById('btn-copy');
-
-    // TODO: แทนที่ด้วย URL รูปจริงของคุณ
-    const imageURL = ''; // e.g. '/images/output.png' or data URL
-
-    dlBtn?.addEventListener('click', () => {
-      if (!imageURL) return;
-      const a = document.createElement('a');
-      a.href = imageURL;
-      a.download = 'promptlaew-result.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
-
-    copyBtn?.addEventListener('click', async () => {
-      const shareURL = window.location.href;
-      try {
-        await navigator.clipboard.writeText(shareURL);
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => (copyBtn.textContent = 'Copy Link'), 1200);
-      } catch {
-        copyBtn.textContent = 'Copy failed';
-        setTimeout(() => (copyBtn.textContent = 'Copy Link'), 1200);
-      }
-    });
-  </script>
+    <div class="header">
+        <div style="flex-grow: 3; display: flex; align-items: center; gap: 36px; flex-direction: row;">
+            <div><p style="font-size: 24px; color: white; margin: 0px;">PromptLaew</p></div>
+            <a class="menu" href="index.html">Explore</a>
+            <a class="menu" href="my-prompts.html">Your Prompts</a>
+            <a class="menu" href="about.html">About</a>
+        </div>
+        <div style="flex-grow: 1; display: flex; align-items: center; gap: 36px; flex-direction:row-reverse;">
+            <a class="menu" href="login.html"><div style="padding: 12px 24px 12px 24px; color: #FFFFFF; background-color: #524FF0; border-radius: 100px;">Sign In</div></a>
+            <a class="menu" href="register.html">Sign Up</a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="hero">
+            <p class="banner">Here’s your result 🎉</p>
+            <p style="margin: 8px 0px 0px 0px">Love it? Save or share your result with others.</p>
+        </div>
+        <div class="CardHandle">
+            <div class="promptCardImage">
+                <div class="Download"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

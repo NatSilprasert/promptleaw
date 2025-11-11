@@ -1,89 +1,115 @@
-/* ใช้ design tokens จาก main.css */
+/* ===== Responsive tokens ===== */
+:root{
+  --container-x: clamp(16px, 5vw, 120px);     /* padding ซ้ายขวาไหลตามจอ */
+  --content-max: 1272px;                      /* ความกว้างสูงสุดของคอนเทนต์ */
+  --card-max: 460px;                           /* ความกว้างสูงสุดของการ์ดรูป */
+  --btn-size: clamp(36px, 6vw, 44px);         /* ขนาดปุ่มลอย */
+}
 
-/* HERO */
+/* ===== Layout (ใช้ .body ของคุณตามเดิม) ===== */
+.body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;                          /* เดิม fix 1135px => ยืดตามจอ */
+  padding: 36px var(--container-x) 0 var(--container-x);
+}
+
+/* ===== Hero ===== */
 .hero{
-  display:flex; flex-direction:column; align-items:center; text-align:center;
-  margin-top: var(--space-6);
-  margin-bottom: var(--space-4);
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
 }
+
 .banner{
-  color:#fff; font-weight:600;
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
-}
-.sub{
-  margin-top: var(--space-2);
-  opacity:.9;
-}
-
-/* CARD WRAP */
-.card-wrap{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-  justify-items:center;
-  margin-bottom: var(--space-6);
+  margin: 0;
+  width: auto;
+  font-size: clamp(24px, 3.5vw, 32px);        /* เดิม 32px => ยืดหยุ่น */
+  font-weight: 600;
+  color: #FFFFFF;
 }
 
-/* RESULT CARD */
-.result-card{
-  width:100%;
-  max-width: 720px;
-  background: var(--surface);
-  border-radius: var(--radius-xl);
-  overflow:hidden;
-  position:relative;
-  display:flex; flex-direction:column;
+/* ===== Card area ===== */
+.CardHandle{
+  margin: 36px 0 0 0;
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Preview image area: ปรับ aspect-ratio และ cover */
-.result-image{
-  width:100%;
-  aspect-ratio: 1 / 1;           /* แนะนำสี่เหลี่ยมจัตุรัสบนมือถือ */
-  background: #0b0b0b;
-  background-image:
-    radial-gradient(transparent 60%, rgba(255,255,255,0.06) 61%),
-    linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-  background-size: cover;
+/* การ์ดรูป: เดิม fixed 460x614 => ใช้ aspect-ratio ให้ยืดหยุ่น */
+.promptCardImage{
+  background-color: #1f1f1f;
+  width: min(100%, var(--card-max));
+  aspect-ratio: 3 / 4;                        /* เทียบเท่า 460x614 */
+  border-radius: 30px;
+  position: relative;                          /* เพื่อวางปุ่มลอย */
+  overflow: hidden;
+}
+
+/* ===== Floating Download Button (เหมือนภาพ) ===== */
+/* เดิมใช้ margin ขยับไปมุม => เปลี่ยนเป็น absolute ยึดมุมล่างขวา */
+.Download{
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 100px;
+  border: none;
+  padding: 0;
+  background-color: #FFFFFF;
+  color: #1f1f1f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.25),
+    0 3px 8px rgba(0,0,0,0.18);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+/* ไอคอนดาวน์โหลด (SVG ฝังผ่าน background) */
+.Download::before{
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
   background-position: center;
-  /* ถ้ามีรูปจริง:
-     background-image: url('...'); background-size: cover; background-position: center; */
+  background-size: 20px 20px;
+  /* arrow-down-tray แบบเส้น (stroke = #1f1f1f) */
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f1f1f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'>\
+  <path d='M12 3v10m0 0l3.5-3.5M12 13L8.5 9.5M4 15.5v2A2.5 2.5 0 006.5 20h11A2.5 2.5 0 0020 17.5v-2'/>\
+  </svg>");
 }
 
-/* Actions bar */
-.card-actions{
-  display:flex; gap: var(--space-2);
-  justify-content:flex-end;
-  padding: var(--space-3);
-  background: rgba(0,0,0,.2);
-  backdrop-filter: blur(6px);
+.Download:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.30),
+    0 6px 12px rgba(0,0,0,0.20);
+}
+.Download:active{ transform: translateY(0); }
+.Download:focus-visible{
+  outline: 3px solid #524FF0;
+  outline-offset: 3px;
 }
 
-.btn{
-  appearance:none; border:none; cursor:pointer;
-  padding: 10px 16px;
-  border-radius: var(--radius-pill);
-  background: var(--brand);
-  color:#fff; font-weight:600;
-}
-.btn:hover, .btn:focus-visible{
-  filter: brightness(1.05);
-  outline: none;
-}
-.btn.ghost{
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-}
-
-/* ≥768px: ขยายสัดส่วนรูป และ spacing */
-@media (min-width: 768px){
-  .result-image{ aspect-ratio: 4 / 3; } /* กว้างขึ้นบนแท็บเล็ต */
-}
-
-/* ≥1024px: กลายเป็น layout สองส่วนถ้าต้องการเพิ่มรายละเอียดด้านข้างในอนาคต */
-@media (min-width: 1024px){
-  .card-wrap{
-    grid-template-columns: 1fr;
-  }
-  .result-card{ max-width: 840px; }
+/* ===== Breakpoints (ถ้าต้องการจูนเพิ่มได้) ===== */
+@media (max-width: 768px){
+  /* ลด padding ขอบจอมือถือให้อ่านง่าย */
+  :root{ --container-x: 16px; }
 }
