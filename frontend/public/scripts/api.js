@@ -121,12 +121,7 @@ export async function login(username, password) {
         }
 
         const data = await response.json();
-        if (data.token) {
-            localStorage.setItem("token", data.token);
-            return data.token;
-        }
-
-        return null;
+        return data.token;      
 
    } catch (error) {
         console.log(error.message);
@@ -149,12 +144,7 @@ export async function register(username, password) {
         }
 
         const data = await response.json();
-        if (data.token) {
-            localStorage.setItem("token", data.token);
-            return data.token;
-        }
-
-        return null;
+        return data.token;
 
    } catch (error) {
         console.log(error.message);

@@ -137,10 +137,54 @@ body {
 }
 
 .promptCard {
+    position: relative;
     background-color: #1f1f1f;
     width: 100%;
     aspect-ratio: 3 / 4;
     border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.promptCard img.prompt-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+}
+
+.promptCard:hover img.prompt-image {
+    transform: scale(1.1);
+}
+
+.promptCard .prompt-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #9520FB, #524FF0);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.promptCard:hover .prompt-btn {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
