@@ -1,12 +1,12 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding: 24px 120px 0;
-  gap: 36px;
+  padding: 16px 120px 0;
+  gap: 24px;
 }
 
 .page-title {
-  font-size: 2.25rem;
+  font-size: 24px;
   font-weight: 600;
   color: white;
   margin: 0;
@@ -16,22 +16,19 @@
   display: flex;
   flex-direction: row;
   gap: 48px;
-  justify-content: center;
-  flex-wrap: wrap;
   width: 100%;
-  max-width: 1272px;
   margin: 0 auto;
 }
 
 /* ===== Left side (Prompt Card) ===== */
 .bigPromptCard {
-  width: 507px;
   display: flex;
   flex-direction: column;
 }
 
 .image {
-  height: 676px;
+  height: 700px;
+  aspect-ratio: 3 / 4;
   background-color: #1f1f1f;
   border: 1px solid #262626;
   border-radius: 30px 30px 0 0;
@@ -46,12 +43,14 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  color: white;
 }
 
 #profilename {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #8B9096;
 }
 
 .profile-icon {
@@ -63,13 +62,13 @@
 
 /* ===== Right side (Prompt form) ===== */
 .prompt {
-  width: 589px;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .prompthead {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   color: white;
   padding: 36px;
@@ -91,7 +90,7 @@
 
 .imageinput {
   width: 100%;
-  min-height: 257px;
+  max-height: 400px;
   padding: 60px 0;
   display: flex;
   flex-direction: column;
@@ -105,7 +104,21 @@
   text-align: center;
 }
 
-#imageinput {
+
+.imageinput:hover {
+    background-color: #524ff01a;
+    border-color: #524ff0;
+}
+
+.imageinput.previewing img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+#browse-btn {
   background-color: #524FF0;
   border-radius: 8px;
   padding: 10px 24px;
@@ -138,7 +151,18 @@
   resize: none;
 }
 
+.textbox:focus {
+    border: solid 1px #524FF0;
+    color: #fff;
+    outline: none;
+}
+
 #generateimage {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   height: 43px;
   padding: 12px 24px;
   border-radius: 100px;
@@ -152,63 +176,59 @@
 
 /* ===== RESPONSIVE ===== */
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .body {
-    padding: 24px 60px;
+    padding: 24px 80px;
   }
 
   .context {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
   }
+
+  .bigPromptCard {
+    flex-direction: column-reverse;
+  }
+
+  .describe {
+    border: 1px solid #262626;
+    border-radius: 30px 30px 0 0;
+    border-bottom: none;
+  }
+
+  .image {
+    border-radius: 0px 0px 30px 30px;
+    height: 600px;
+  }
+
 
   .bigPromptCard,
   .prompt {
-    width: 100%;
-    max-width: 600px;
+    width: 80%;
   }
 }
 
 @media (max-width: 768px) {
   .body {
-    padding: 24px 20px;
+    padding: 24px 24px;
   }
 
   .page-title {
-    font-size: 1.8rem;
+    font-size: 20px;
   }
 
   .prompthead {
-    font-size: 20px;
-    padding: 24px;
-  }
-
-  .promptbody {
-    padding: 24px;
-  }
-
-  .textbox {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  .context {
-    gap: 24px;
+    font-size: 16px;
   }
 
   .bigPromptCard,
   .prompt {
-    max-width: 100%;
+      width: 100%;
   }
 
-  #generateimage {
-    width: 100%;
+  .image {
+    height: auto;
   }
+
 }

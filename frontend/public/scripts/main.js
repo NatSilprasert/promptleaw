@@ -12,7 +12,10 @@ closeNav.addEventListener("click", () => {
 });
 
 // Create Prompt
-const createBtn = document.getElementById("create");
-createBtn.addEventListener("click", () => {
-    window.location.href = "create.html";
-});
+const createBtn = document.getElementById("create-prompt");
+
+if (createBtn != null) {
+    createBtn.addEventListener("click", () => {
+        window.location.href = "create.html";
+    });
+}

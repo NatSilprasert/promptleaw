@@ -58,10 +58,12 @@
         </div>
 
         <div class="promptbody">
-          <div class="imageinput">
-            <p>Drag your file here</p>
-            <button id="imageinput">Browse File</button>
-          </div>
+            <div id="image-box" class="imageinput">
+                <img id="preview-image" src="assets/upload.svg" width="36px" height="36px" alt="">
+                <p id="upload-text">Drag your file here</p>
+                <input type="file" id="imageinput" hidden>
+                <button type="button" id="browse-btn">Browse File</button>
+            </div>
 
           <div class="input-group">
             <p class="label">Prompt</p>
@@ -73,13 +75,19 @@
             <textarea class="textbox" style="height: 100px;" placeholder="Add more details..."></textarea>
           </div>
 
-          <button id="generateimage">Generate Image</button>
+          <button id="generateimage">
+            <img src="assets/wand-sparkles.svg" width="16px" height="16px" alt="">
+            <p>
+                Generate Image
+            </p>
+          </button>
         </div>
       </div>
     </div>
   </main>
 
   <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/pages/prompt.js"></script>
 
 </body>
 </html>

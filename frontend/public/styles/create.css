@@ -222,23 +222,32 @@
         padding: 24px 24px;
     }
 
-        .promptbody {
-            width: 100%;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-            background-color: #0A0B0F;
-            border: 1px solid #262626;
-            border-top: none;
-            align-items: center;
-            border-radius: 0 0 20px 20px;
-        }
-    
-        #prompt-textarea {
-            min-height: 200px;
-            resize: vertical;
-        }
+    .page-title {
+        font-size: 20px;
+    }
+
+    .prompthead p {
+        font-size: 16px;
+        /* Slightly smaller */
+    }
+
+    .promptbody {
+        width: 100%;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        background-color: #0A0B0F;
+        border: 1px solid #262626;
+        border-top: none;
+        align-items: center;
+        border-radius: 0 0 20px 20px;
+    }
+
+    #prompt-textarea {
+        min-height: 200px;
+        resize: vertical;
+    }
 }
 
 
