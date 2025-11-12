@@ -84,6 +84,12 @@
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.create:hover {
+    background-color: #3b39c7;
+    border: solid 1px #3b39c7;
 }
 
 @media (max-width: 1024px) {

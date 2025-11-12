@@ -102,6 +102,11 @@ body {
     background-color: #524FF0;
     font-weight: 500;
     border-radius: 100px;
+    transition: background-color 0.2s;
+}
+
+.signin-btn:hover {
+    background-color: #3b39c7;
 }
 
 /* ===== HAMBURGER MENU ===== */

@@ -5,6 +5,6 @@ import { upload } from '../middleware/upload.js';
 
 const generateRouter = express.Router();
 
-generateRouter.post('/', authUser, upload.single("image"), generateImageHandler);
+generateRouter.post('/', upload.single("imageFile"), generateImageHandler);
 
 export default generateRouter

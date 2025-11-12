@@ -5,14 +5,7 @@ import fs from "fs";
 
 export const createPrompt = async (req, res) => {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
-    if (!token) {
-    return res.status(401).json({ success: false, message: "No token provided." });
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decoded.id;
-
+    const { userId } = req;
     const { title, prompt } = req.body;
     const imageFile = req.file;
 

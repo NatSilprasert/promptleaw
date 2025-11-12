@@ -126,6 +126,11 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#browse-btn:hover {
+    background-color: #3b39c7;
 }
 
 .input-group {
