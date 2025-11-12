@@ -67,26 +67,26 @@ input{
   letter-spacing: .1px;
 }
 input::placeholder{
-  color: #AEB4BC;
+  color: #8B9096;
   opacity: 1;
   font-weight: 300;               
 }
 input:focus{
-  background-color: #111827;
-  box-shadow: 0 0 0 3px rgba(82,79,240,.25);
+  border: solid 1px #524FF0;
+
 }
 
 /* ===== Button ===== */
-button{
+button {
   width: 100%;
   background-color: var(--brand);
   padding: 12px 24px;
   border: none;
   border-radius: var(--radius-pill);
   color: var(--text);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
-  margin-bottom: 24px;
+  margin: 12px 0px 24px 0px;
   cursor: pointer;
   transition: filter .15s ease, transform .1s ease;
 }

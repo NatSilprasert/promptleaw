@@ -8,18 +8,34 @@
     <title>PromptLaew</title>
 </head>
 <body>
-    <div class="header">
-        <div style="flex-grow: 3; display: flex; align-items: center; gap: 36px; flex-direction: row;">
-            <div><p style="font-size: 24px; color: white; margin: 0px;">PromptLaew</p></div>
-            <a class="menu" href="index.html">Explore</a>
-            <a class="menu" href="my-prompts.html">Your Prompts</a>
-            <a class="menu" href="about.html">About</a>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/brain.svg" alt="">
+            <p>PromptLaew</p>
         </div>
-        <div style="flex-grow: 1; display: flex; align-items: center; gap: 36px; flex-direction:row-reverse;">
-            <a class="menu" href="login.html"><div style="padding: 12px 24px 12px 24px; color: #FFFFFF; background-color: #524FF0; border-radius: 100px;">Sign In</div></a>
-            <a class="menu" href="register.html">Sign Up</a>
-        </div>
-    </div>
+    
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    
+        <nav class="nav" id="nav">
+            <img id="nav-x" class="nav-x" src="assets/x.svg" alt="">
+            <div class="nav-left">
+                <a class="menu" href="index.html">Explore</a>
+                <a class="menu" href="my-prompts.html">Your Prompts</a>
+                <a class="menu" href="about.html">About</a>
+            </div>
+            <div class="nav-right">
+                <a class="menu" href="register.html">Sign Up</a>
+                <a class="menu" href="login.html">
+                    <div class="signin-btn">Sign In</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
     <div class="body">
         <div class="hero">
             <p class="banner">Here’s your result 🎉</p>
@@ -31,5 +47,8 @@
             </div>
         </div>
     </div>
+
+    <script type="module" src="scripts/main.js"></script>
+
 </body>
 </html>

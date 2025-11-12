@@ -9,7 +9,10 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo">PromptLaew</div>
+        <div class="logo">
+            <img src="assets/brain.svg" alt="">
+            <p>PromptLaew</p>
+        </div>
 
         <button class="hamburger" id="hamburger">
             <span></span>
@@ -18,16 +21,17 @@
         </button>
 
         <nav class="nav" id="nav">
+            <img id="nav-x" class="nav-x" src="assets/x.svg" alt="">
             <div class="nav-left">
                 <a class="menu" href="index.html">Explore</a>
                 <a class="menu" href="my-prompts.html">Your Prompts</a>
                 <a class="menu" href="about.html">About</a>
             </div>
             <div class="nav-right">
+                <a class="menu" href="register.html">Sign Up</a>
                 <a class="menu" href="login.html">
                     <div class="signin-btn">Sign In</div>
                 </a>
-                <a class="menu" href="register.html">Sign Up</a>
             </div>
         </nav>
     </header>
@@ -40,40 +44,35 @@
             <div class="prompthead">
                 <p>Basic Information</p>
             </div>
-            <div class="promptbody">
-                <div class="imageinput">
-                    <p>Drag your file here</p>
-                    <button id="imageinput">Browse File</button>
+            <form id="create-form" class="promptbody">
+                <div id="image-box" class="imageinput">
+                    <img id="preview-image" src="assets/upload.svg" width="36px" height="36px" alt="">
+                    <p id="upload-text">Drag your file here</p>
+                    <input type="file" id="imageinput" hidden>
+                    <button type="button" id="browse-btn">Browse File</button>
                 </div>
                 
                 <!-- This div wraps the form fields -->
                 <div class="form-content">
-                    <div class="form-group">
+                    <div class="form-group-1">
                         <p class="form-label">Title</p>
                         <input type="text" class="form-input">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-2">
                         <p class="form-label">Prompt</p>
                         <textarea class="form-input" id="prompt-textarea"></textarea>
                     </div>
                     <div class="form-actions">
-                        <button id="create">Create</button>
-                        <button id="clear">Clear</button>
+                        <button type="submit" id="create">Create</button>
+                        <button type="reset" id="clear">Clear</button>
                     </div>
                 </div>
-            </div>
+            </ด>
         </div>
     </main>
 
-    <script>
-        // Toggle menu visibility on mobile
-        const hamburger = document.getElementById("hamburger");
-        const nav = document.getElementById("nav");
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/pages/create.js"></script>
 
-        hamburger.addEventListener("click", () => {
-            nav.classList.toggle("active");
-            hamburger.classList.toggle("active");
-        });
-    </script>
 </body>
 </html>
