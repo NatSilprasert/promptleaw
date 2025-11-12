@@ -173,6 +173,7 @@
 }
 
 #clear,
+#delete,
 #create {
     height: 43px;
     padding: 12px 24px;
@@ -181,6 +182,19 @@
     border: none;
     font-family: "Inter", sans-serif;
     cursor: pointer;
+}
+
+#delete {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FF0028;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+#delete:hover {
+    background-color: #ff0026e3;
 }
 
 #clear {

@@ -1,7 +1,7 @@
 
 import { BACKEND_URL } from "./config.js";
 
-export async function createPrompt(title, prompt, imageFile) {
+export async function createPrompt(title, prompt, imageFile, token) {
    try {
       const formData = new FormData();
       formData.append("title" , title);
@@ -9,7 +9,10 @@ export async function createPrompt(title, prompt, imageFile) {
       formData.append("imageFile", imageFile);
       
       await fetch(BACKEND_URL + "/api/prompt/create", {
-        method: "POST",
+          method: "POST",
+          headers: {
+              "Authorization": `Bearer ${token}`
+          },
         body: formData
       });
 
@@ -81,24 +84,36 @@ export async function getMyPrompt(token) {
    }
 }
 
-export async function updatePrompt(item, id) {
+export async function updatePrompt(item, id, token) {
    try {
-     await fetch(BACKEND_URL + `/api/prompt/update/${id}`, {
-        method: "PUT",
-        headers: {
-        "Content-Type": "application/json"
-        },
-        body: JSON.stringify(item)
-     });
+        const formData = new FormData();
+        formData.append("title", item.title);
+        formData.append("prompt", item.prompt);
+
+        if (item.imageFile) {
+            formData.append("imageFile", item.imageFile);
+        }
+
+        await fetch(BACKEND_URL + `/api/prompt/update/${id}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: formData
+        });
+
    } catch (error) {
      console.log(error.message);
    }
 }
 
-export async function deletePrompt(id) {
+export async function deletePrompt(id, token) {
     try {
         await fetch(BACKEND_URL + `/api/prompt/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+              "Authorization": `Bearer ${token}`
+            },
         });
     } catch (error) {
         console.log(error.message);
