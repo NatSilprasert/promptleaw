@@ -4,13 +4,8 @@ const list = document.getElementById("promptCardSection");
 
 async function renderPrompts() {
   const token = localStorage.getItem("token");
-  if (!token) {
-    alert("You are not login yet!");
-    return;
-  }
- 
-  console.log(token)
-  
+  if (!token) return;
+
   const prompts = await getMyPrompt(token);
   list.innerHTML = "";
 
