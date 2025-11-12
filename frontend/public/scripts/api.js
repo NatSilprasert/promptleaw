@@ -55,15 +55,16 @@ export async function getOnePrompt(id) {
 }
 
 // FiterPrompt
-export async function getMyPrompt(id) {
+export async function getMyPrompt(token) {
    try {
      const response = await fetch(BACKEND_URL + '/api/prompt/filter', {
         method: "POST",
         headers: {
-        "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-            "user_id": id
+        
         })
      });
 
@@ -105,11 +106,49 @@ export async function deletePrompt(id) {
 }
 
 export async function login(username, password) {
-  
+    try {
+        const response = await fetch(BACKEND_URL + '/api/user/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Login failed");
+        }
+
+        const data = await response.json();
+        return data.token;      
+
+   } catch (error) {
+        console.log(error.message);
+   }
 }
 
 export async function register(username, password) {
-    
+    try {
+        const response = await fetch(BACKEND_URL + '/api/user/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Register failed");
+        }
+
+        const data = await response.json();
+        return data.token;
+
+   } catch (error) {
+        console.log(error.message);
+   }
 }
 
 export async function generateImage(prompt, imageFile) {
