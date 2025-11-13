@@ -520,3 +520,8 @@ button:disabled {
     margin-top: 20px;
   }
 }
+button.loading {
+    pointer-events: none;
+    /* ป้องกันการกดซ้ำ */
+}
+

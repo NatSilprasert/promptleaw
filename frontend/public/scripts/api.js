@@ -176,18 +176,22 @@ export async function generateImage(prompt, imageFile) {
     try {
         const formData = new FormData();
         formData.append("prompt", prompt);
-        formData.append("image", imageFile);
+        formData.append("imageFile", imageFile);
     
         const response = await fetch(BACKEND_URL + "/api/generate", {
             method: "POST",
             body: formData,
         });
 
+        if (!response.ok) {
+            const text = await response.text();
+            console.error("Server error or not JSON:", text);
+            throw new Error(`Server returned ${response.status}`);
+        }
+
         const data = await response.json();
-        const imageBase64 = data?.imageBase64;
-        if (!imageBase64) throw new Error("No image returned from server");
-        const imageUrl = `data:image/png;base64,${imageBase64}`;
-        
+        const imageUrl = data?.imageUrl;
+    
         return imageUrl;
 
     } catch (error) {

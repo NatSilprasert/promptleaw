@@ -55,6 +55,14 @@
   overflow: hidden;
 }
 
+.promptCardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* ทำให้เต็ม container และ crop ถ้าจำเป็น */
+  display: block;
+}
+
 .Download{
   position: absolute;
   right: 16px;

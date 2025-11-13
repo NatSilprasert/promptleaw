@@ -1,6 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import fs from "fs";
+import cloudinary from "../config/cloudinary.js";
 
 dotenv.config();
 
@@ -51,10 +52,15 @@ export const generateImageHandler = async (req, res) => {
       });
     }
 
+    const uploadResult = await cloudinary.uploader.upload(
+      `data:image/png;base64,${savedImageBase64}`,
+      { folder: "generated_images" }
+    );
+
     res.status(200).json({
       success: true,
       message: "Image generated successfully",
-      imageBase64: savedImageBase64,
+      imageUrl: uploadResult.secure_url,
     });
 
   } catch (err) {
