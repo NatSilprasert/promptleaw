@@ -1,41 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>PromptLaew | Generate AI Images from Viral Prompts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptLaew | About</title>
+
+  <!-- ใช้สไตล์หลักเดิม + สไตล์หน้า About -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/about.css" />
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="assets/brain.svg" alt="">
-            <p>PromptLaew</p>
-        </div>
-    
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    
-        <nav class="nav" id="nav">
-            <img id="nav-x" class="nav-x" src="assets/x.svg" alt="">
-            <div class="nav-left">
-                <a class="menu" href="index.html">Explore</a>
-                <a class="menu" href="my-prompts.html">Your Prompts</a>
-                <a class="menu" href="about.html">About</a>
-            </div>
-            <div class="nav-right">
-                <a class="menu" href="register.html">Sign Up</a>
-                <a class="menu" href="login.html">
-                    <div class="signin-btn">Sign In</div>
-                </a>
-            </div>
-        </nav>
-    </header>
+  <!-- Header: คัดลอกโครงจากหน้าอื่นให้เหมือนเดิม -->
+  <header class="header">
+    <div class="logo">
+      <img src="assets/brain.svg" alt="" />
+      <p>PromptLaew</p>
+    </div>
 
-    <script type="module" src="scripts/main.js"></script>
-    
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <img id="nav-x" class="nav-x" src="assets/x.svg" alt="">
+      <div class="nav-left">
+        <a class="menu" href="index.html">Explore</a>
+        <a class="menu" href="my-prompts.html">Your Prompts</a>
+        <a class="menu" href="about.html" aria-current="page">About</a>
+      </div>
+      <div class="nav-right">
+        <a class="menu" href="register.html">Sign Up</a>
+        <a class="menu" href="login.html">
+          <div class="signin-btn">Sign In</div>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page container">
+    <!-- Hero -->
+    <section class="about-hero">
+      <p class="eyebrow">ABOUT</p>
+      <h1 class="title">Make viral prompts usable for everyone</h1>
+      <p class="subtitle">PromptLaew helps you find, tweak, and generate AI images fast — with clean UX, curated prompts, and shareable results.</p>
+    </section>
+
+    <!-- How it works -->
+    <section class="about-section">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Explore</h3>
+          <p>Browse trending prompts from the community.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Customize</h3>
+          <p>Adjust styles, seeds, and key parameters easily.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Generate</h3>
+          <p>Create images using your configured prompt.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Share</h3>
+          <p>Save or share your results with a single link.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features / Value props -->
+    <section class="about-section">
+      <h2 class="section-title">Why PromptLaew</h2>
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Curated & Organized</h3>
+          <p>Prompts are categorized and reviewed so you can find what works without digging through noise.</p>
+        </article>
+        <article class="card">
+          <h3>Creator Credits</h3>
+          <p>We respect authorship. Each prompt highlights its original creator when available.</p>
+        </article>
+        <article class="card">
+          <h3>Simple by Design</h3>
+          <p>Clean, fast UI that gets out of your way. Less fiddling, more generating.</p>
+        </article>
+        <article class="card">
+          <h3>Built for Mobile</h3>
+          <p>Responsive layout works beautifully across phones, tablets, and desktops.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="about-section">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Is it free to browse prompts?</summary>
+          <p>Yes. You can explore and view prompts freely. Some features may require sign-in.</p>
+        </details>
+        <details>
+          <summary>Which model powers image generation?</summary>
+          <p>Currently we integrate with a Gemini-based backend for image generation in this project setup.</p>
+        </details>
+        <details>
+          <summary>Can I submit my own prompts?</summary>
+          <p>Yes. Create an account, then submit and manage your prompts from <em>Your Prompts</em>.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <h2>Ready to try?</h2>
+      <p>Sign up in seconds and start generating.</p>
+      <div class="cta-actions">
+        <a class="btn" href="register.html">Get Started</a>
+        <a class="btn ghost" href="index.html">Explore Prompts</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
