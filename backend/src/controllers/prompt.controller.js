@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import promptModel from "../models/prompt.model.js";
 import cloudinary from "../config/cloudinary.js";
 import fs from "fs";
+import userModel from "../models/user.model.js";
 
 export const createPrompt = async (req, res) => {
   try {
@@ -65,12 +66,23 @@ export const getAllPrompt = async (req, res) => {
 export const getOnePrompt = async (req, res) => {
   try {
     const { id } = req.params;
-    const prompt = await promptModel.findById(id);
 
+    const prompt = await promptModel.findById(id);
+    
     if (!prompt) {
+        return res.status(404).json({
+            success: false,
+            message: "Prompt not found.",
+        });
+    }
+
+    const userId = prompt.createdBy;
+    const user = await userModel.findById(userId);
+    
+     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "Prompt not found.",
+        message: "User not found.",
       });
     }
 
@@ -78,7 +90,9 @@ export const getOnePrompt = async (req, res) => {
       success: true,
       message: "Prompt retrieved successfully.",
       prompt,
+      user
     });
+
   } catch (error) {
     console.error("Error fetching prompt:", error);
     return res.status(500).json({
@@ -121,19 +135,48 @@ export const getFilterPrompt = async (req, res) => {
 export const updatePrompt = async (req, res) => {
     try {
     const { id } = req.params;
-    const updatedPrompt = await promptModel.findByIdAndUpdate(id, req.body, { new: true });
+    const { title, prompt } = req.body;
+    const imageFile = req.file;
 
-    if (!updatedPrompt) {
-      return res.status(404).json({
-      success: false,
-      message: "Prompt not found",
-    });
+    const existingPrompt = await promptModel.findById(id);
+    if (!existingPrompt) {
+      return res.status(404).json({ message: "Prompt not found" });
     }
 
-    return res.status(200).json({
-      success: true,
-      message: "Prompt updated successfully.",
-      prompt: updatedPrompt,
+    let imageUrl = existingPrompt.imageUrl;
+
+     if (imageFile) {
+      if (existingPrompt.imageUrl) {
+        try {
+          const publicId = existingPrompt.imageUrl
+            .split("/")
+            .slice(-2)
+            .join("/")
+            .replace(/\.[^/.]+$/, "");
+
+          await cloudinary.uploader.destroy(publicId);
+        } catch (err) {
+          console.warn("Failed to delete old image from Cloudinary:", err.message);
+        }
+      }
+
+      const uploadResult = await cloudinary.uploader.upload(imageFile.path, {
+        folder: "prompts",
+      });
+      imageUrl = uploadResult.secure_url;
+
+      fs.unlinkSync(imageFile.path);
+    }
+
+    existingPrompt.title = title || existingPrompt.title;
+    existingPrompt.prompt = prompt || existingPrompt.prompt;
+    existingPrompt.imageUrl = imageUrl;
+
+    await existingPrompt.save();
+
+    res.status(200).json({
+      message: "Prompt updated successfully",
+      prompt: existingPrompt
     });
 
   } catch (error) {

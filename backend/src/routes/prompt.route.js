@@ -9,7 +9,7 @@ promptRouter.get('/', getAllPrompt)
 promptRouter.get('/:id', getOnePrompt)
 promptRouter.post('/filter', authUser, getFilterPrompt)
 promptRouter.post('/create', authUser, upload.single("imageFile"), createPrompt)
-promptRouter.put('/update/:id', authUser, updatePrompt)
+promptRouter.put('/update/:id', authUser, upload.single("imageFile"), updatePrompt)
 promptRouter.delete('/:id', authUser, deletePrompt)
 
 export default promptRouter
