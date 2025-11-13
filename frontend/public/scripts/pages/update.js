@@ -23,7 +23,7 @@ async function loadPrompt() {
   if (!promptId) return;
 
   try {
-    const prompt = await getOnePrompt(promptId);
+    const { prompt }  = await getOnePrompt(promptId, token);
     
     titleInput.value = prompt.title || "";
     promptTextarea.value = prompt.prompt || "";

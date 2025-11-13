@@ -38,19 +38,28 @@ export async function getAllPrompt() {
    }
 }
 
-export async function getOnePrompt(id) {
+export async function getOnePrompt(id, token) {
    try {
      const response = await fetch(BACKEND_URL + `/api/prompt/${id}`, {
         method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
      });
 
      const data = await response.json();
      const prompt = data?.prompt;
-     if (!prompt){
+     const user = data?.user;
+
+     if (!prompt) {
         throw new Error("No prompt from server");
      }
+
+     if (!user) {
+        throw new Error("No user from server");
+     }
      
-     return prompt;
+     return { prompt, user };
 
    } catch (error) {
       console.log(error.message);
