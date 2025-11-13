@@ -1,4 +1,4 @@
-/* Fallback tokens (จะดึงจาก main.css ถ้ามีตัวแปรอยู่แล้ว) */
+/* Fallback tokens */
 :root{
   --text-strong: #FFFFFF;
   --text: #8B9096;
@@ -11,7 +11,7 @@
   --space-4: 20px; --space-5: 24px; --space-6: 36px; --space-7: 60px;
 }
 
-/* ถ้าไม่มี .container ใน main.css ส่วนนี้จะทำงานแทน */
+/*  .container  */
 .container{
   width:100%;
   max-width: var(--container-max);
@@ -174,4 +174,23 @@
 }
 @media (min-width: 1024px){
   .feature-grid{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+
+.about-hero .location{
+  display:inline-block;
+  margin-top: var(--space-3);
+  color:#E6E8EB;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: .9rem;
+}
+
+.contact-card .emails a{
+  display: block;
+  margin-top: 6px;
+}
+.contact-card .emails a:first-child{
+  margin-top: 0;
 }
