@@ -1,24 +1,32 @@
 import jwt from "jsonwebtoken";
 import promptModel from "../models/prompt.model.js";
 import cloudinary from "../config/cloudinary.js";
-import fs from "fs";
 import userModel from "../models/user.model.js";
+import streamifier from 'streamifier';
+
+const streamUpload = (fileBuffer, folder = "prompts") => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder },
+      (error, result) => {
+        if (result) resolve(result);
+        else reject(error);
+      }
+    );
+    streamifier.createReadStream(fileBuffer).pipe(stream);
+  });
+};
 
 export const createPrompt = async (req, res) => {
   try {
     const { userId } = req;
     const { title, prompt } = req.body;
-    const imageFile = req.file;
 
     let imageUrl = null;
 
-    if (imageFile) {
-      const uploadResult = await cloudinary.uploader.upload(imageFile.path, {
-        folder: "prompts",
-      });
+    if (req.file) {
+      const uploadResult = await streamUpload(req.file.buffer);
       imageUrl = uploadResult.secure_url;
-
-      fs.unlinkSync(imageFile.path);
     }
 
     const newPrompt = new promptModel({
@@ -35,7 +43,6 @@ export const createPrompt = async (req, res) => {
       message: "Prompt created successfully.",
       prompt: savedPrompt,
     });
-
   } catch (error) {
     console.error("Error creating prompt:", error);
     return res.status(500).json({
@@ -133,7 +140,7 @@ export const getFilterPrompt = async (req, res) => {
 };
 
 export const updatePrompt = async (req, res) => {
-    try {
+  try {
     const { id } = req.params;
     const { title, prompt } = req.body;
     const imageFile = req.file;
@@ -145,7 +152,7 @@ export const updatePrompt = async (req, res) => {
 
     let imageUrl = existingPrompt.imageUrl;
 
-     if (imageFile) {
+    if (imageFile) {
       if (existingPrompt.imageUrl) {
         try {
           const publicId = existingPrompt.imageUrl
@@ -153,19 +160,17 @@ export const updatePrompt = async (req, res) => {
             .slice(-2)
             .join("/")
             .replace(/\.[^/.]+$/, "");
-
           await cloudinary.uploader.destroy(publicId);
         } catch (err) {
-          console.warn("Failed to delete old image from Cloudinary:", err.message);
+          console.warn(
+            "Failed to delete old image from Cloudinary:",
+            err.message
+          );
         }
       }
 
-      const uploadResult = await cloudinary.uploader.upload(imageFile.path, {
-        folder: "prompts",
-      });
+      const uploadResult = await streamUpload(imageFile.buffer);
       imageUrl = uploadResult.secure_url;
-
-      fs.unlinkSync(imageFile.path);
     }
 
     existingPrompt.title = title || existingPrompt.title;
@@ -176,9 +181,8 @@ export const updatePrompt = async (req, res) => {
 
     res.status(200).json({
       message: "Prompt updated successfully",
-      prompt: existingPrompt
+      prompt: existingPrompt,
     });
-
   } catch (error) {
     console.error("Error updating prompt:", error);
     return res.status(500).json({

@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
-import fs from "fs";
 import cloudinary from "../config/cloudinary.js";
 
 dotenv.config();
@@ -10,11 +9,15 @@ const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 export const generateImageHandler = async (req, res) => {
   try {
     const { prompt } = req.body;
-    const imageFile = req.file.path;
 
-    // Read file in buffer
-    const imageData = fs.readFileSync(imageFile);
-    const base64Image = imageData.toString("base64");
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "No input image provided.",
+      });
+    }
+
+    const base64Image = req.file.buffer.toString("base64");
 
     const contents = [
       {
@@ -43,8 +46,6 @@ export const generateImageHandler = async (req, res) => {
       }
     }
 
-    fs.unlinkSync(imageFile); // Delete file done
-
     if (!savedImageBase64) {
       return res.status(400).json({
         success: false,
@@ -62,7 +63,6 @@ export const generateImageHandler = async (req, res) => {
       message: "Image generated successfully",
       imageUrl: uploadResult.secure_url,
     });
-
   } catch (err) {
     console.error("Error generating image:", err);
     res.status(500).json({
