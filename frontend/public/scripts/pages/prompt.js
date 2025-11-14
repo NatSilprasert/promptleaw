@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewImage = document.getElementById("preview-image");
   const uploadText = document.getElementById("upload-text");
 
-  browseBtn.addEventListener("click", () => fileInput.click());
   imageBox.addEventListener("click", () => fileInput.click());
 
   fileInput.addEventListener("change", (event) => {

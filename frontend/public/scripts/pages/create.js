@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedFile = null;
 
-  browseBtn.addEventListener("click", () => fileInput.click());
   imageBox.addEventListener("click", () => fileInput.click());
 
   fileInput.addEventListener("change", (event) => {
