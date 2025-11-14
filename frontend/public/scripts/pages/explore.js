@@ -24,7 +24,7 @@ async function renderPrompts(promptsToRender) {
         <span>Create with AI</span>
     `;
 
-    btn.addEventListener("click", () => {
+    card.addEventListener("click", () => {
       window.location.href = `prompt.html?id=${p._id}`;
     });
 

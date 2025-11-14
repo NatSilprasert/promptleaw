@@ -27,7 +27,7 @@ async function renderPrompts() {
         <span>Edit Item</span>
     `;
 
-    btn.addEventListener("click", () => {
+    card.addEventListener("click", () => {
       window.location.href = `update.html?id=${p._id}`;
     });
 
