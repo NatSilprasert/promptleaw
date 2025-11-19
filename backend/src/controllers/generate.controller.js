@@ -63,6 +63,7 @@ export const generateImageHandler = async (req, res) => {
       message: "Image generated successfully",
       imageUrl: uploadResult.secure_url,
     });
+    
   } catch (err) {
     console.error("Error generating image:", err);
     res.status(500).json({
